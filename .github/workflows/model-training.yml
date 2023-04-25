@@ -1,0 +1,21 @@
+name: train-model
+on: [push]
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Train train-model
+        run: python src/train.py
+      - name: Save Model
+        uses: actions/upload-artifact@v3
+        with:
+          name: baummethoden_lr.pickle
+          path: data/models/baummethoden_lr.pickle
