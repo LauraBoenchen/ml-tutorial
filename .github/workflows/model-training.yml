@@ -1,4 +1,4 @@
-name: train-model
+name: model-training
 on: [push]
 jobs:
   train-model:
@@ -6,15 +6,14 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Setup Python
+      - name: Setup Python und install requirements
         uses: actions/setup-python@v4
         with:
           python-version: "3.8"
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-      - name: Train train-model
+      - run: pip install -r requirements.txt
+      - name: Train model
         run: python src/train.py
-      - name: Save Model
+      - name: Upload trained model
         uses: actions/upload-artifact@v3
         with:
           name: baummethoden_lr.pickle

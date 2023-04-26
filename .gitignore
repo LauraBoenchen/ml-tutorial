@@ -1,4 +1,6 @@
 .venv
+venv
 
 data/models/*
 !data/models/.gitkeep
+__pycache__
