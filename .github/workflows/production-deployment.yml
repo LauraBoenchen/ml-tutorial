@@ -37,6 +37,9 @@ jobs:
           git add --force data/models/baummethoden_lr.pickle
           git commit -m "[CI] update trained model" || echo "No changes to commit"
           git push --set-upstream origin heroku
+      - name: Install Heroku CLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh 
       - name: Deploy to Heroku v2
         uses: akhileshns/heroku-deploy@v3.13.15
         with:
